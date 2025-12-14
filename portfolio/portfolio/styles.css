@@ -37,7 +37,7 @@ body {
 
 .intro {
     display: flex;
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -100,6 +100,15 @@ section {
     border-radius: 50px;
     border-top: 3px solid rgb(255, 127, 127);
     z-index: 99;
+    transition: 0.3s ease;
+
+    animation:
+        nav-drop 1s ease 1s forwards;
+    opacity: 0;
+}
+
+.nav-container:hover {
+    background-color: rgba(228, 0, 0, 0.753);
 }
 
 .links {
@@ -183,6 +192,19 @@ section {
 .left-nav {
     gap: 20rem;
 }
+
+@keyframes nav-drop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0.5%);
+        opacity: 1;
+    }
+}
+
 
 
 
@@ -333,7 +355,7 @@ section {
 }
 
 .profile-arrow { 
-    border: 2px solid red;
+    border: 2px solid rgb(255, 87, 87);
     border-radius: 100%;
     color: white;
     background-color: rgba(255, 57, 57, 0.392);
@@ -376,8 +398,7 @@ section {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: var(--about-bg);
-    background-size: cover;
+    background-color: var(--box-shadow);
     z-index: -99;
     box-shadow: 0 0 20px 20px black;
     filter: blur(10px);
@@ -401,6 +422,7 @@ section {
     width: 300px;
     height: 100vh;
     background-color: white;
+    box-shadow: inset 0 -50px 50px -50px rgb(68, 0, 0);
 }
 
 .about-description {
@@ -582,7 +604,6 @@ section {
     width: 200vmax;
     position: fixed;
     background-color: rgb(255, 53, 53);
-    box-shadow: 0 0 100vmax 50vmax var(--box-shadow);
     z-index: 1000;
     transform: translate(-50%, -50%) scale(0);
     transform-origin: center center;
