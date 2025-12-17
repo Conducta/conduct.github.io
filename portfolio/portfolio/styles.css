@@ -100,7 +100,7 @@ section {
     border-radius: 50px;
     border-top: 3px solid rgb(255, 127, 127);
     z-index: 99;
-    transition: 0.3s ease;
+    transition: 0.1s ease;
 
     animation:
         nav-drop 1s ease 1s forwards;
