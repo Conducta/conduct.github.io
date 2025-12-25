@@ -103,7 +103,7 @@ section {
     transition: 0.1s ease;
 
     animation:
-        nav-drop 1s ease 1s forwards;
+        nav-drop 1s ease 0.5s forwards;
     opacity: 0;
 }
 
