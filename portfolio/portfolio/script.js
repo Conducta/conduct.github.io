@@ -107,3 +107,51 @@ fx.addEventListener("animationend", (e) => {
         btn.style.pointerEvents = "auto";
     }
 });
+
+
+
+
+
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalImage = document.getElementById("modalImage");
+
+let images = [];
+let index = 0;
+
+document.querySelectorAll(".view").forEach(btn => {
+    btn.addEventListener("click", () => {
+        modalTitle.textContent = btn.dataset.title;
+        images = JSON.parse(btn.dataset.images);
+        index = 0;
+        modalImage.src = images[index];
+        modal.classList.add("active");
+    });
+});
+
+document.querySelector(".modal-close").onclick = () => {
+    modal.classList.remove("active");
+};
+
+const fadeToImage = (newIndex) => {
+    modalImage.style.opacity = "0";
+
+    setTimeout(() => {
+        index = newIndex;
+        modalImage.src = images[index];
+        modalImage.style.opacity = "1";
+    }, 200);
+};
+
+document.querySelector(".next").onclick = () => {
+    fadeToImage((index + 1) % images.length);
+};
+
+document.querySelector(".prev").onclick = () => {
+    fadeToImage((index - 1 + images.length) % images.length);
+};
+
+
+modal.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.remove("active");
+});

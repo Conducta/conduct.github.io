@@ -19,9 +19,13 @@
               rgb(255, 217, 217);
     --about-chores: rgb(220, 142, 142);
     --skills-bg: rgb(241, 189, 189);
-    --skill-card: rgb(255, 176, 176);
+    --skill-card: rgb(182, 87, 87);
     --skill-container: rgb(219, 129, 129);
-    --skill-border: rgb(201, 98, 98);
+    --skill-border: rgb(243, 147, 147);
+    --project-bg: rgb(255, 139, 139);
+    --project-title: rgb(255, 255, 255);
+    --project-container: rgb(192, 111, 111);
+    --arts-bg: rgb(255, 107, 107);
     --box-shadow: white;
     --text-light: black;
     --text-gray: white;
@@ -39,11 +43,15 @@
                     transparent 60%
                 ),
                 rgb(42, 20, 20);
-    --about-chores: rgb(55, 23, 23);
+    --about-chores: rgb(39, 14, 14);
     --skills-bg: rgb(30, 20, 20);
     --skill-card: rgb(61, 22, 22);
     --skill-container: linear-gradient(300deg, rgb(28, 11, 11) 0%, rgb(47, 12, 12) 100%);
     --skill-border: rgb(120, 23, 23);
+    --project-bg: rgb(41, 3, 3);
+    --project-title: rgb(240, 46, 127);
+    --project-container: rgb(94, 0, 31);
+    --arts-bg: rgb(63, 36, 36);
     --box-shadow: black;
     --text-light: white;
     --text-gray: rgb(176, 176, 176);
@@ -59,7 +67,6 @@ body {
     padding: 0;
     top: 0;
     font-family: 'Chillax', sans-serif;
-    background-color: rgb(105, 0, 0);
 }
 
 .intro {
@@ -167,52 +174,6 @@ section {
     transition: all 0.2s ease;
 }
 
-.links a span {
-    position: relative;
-    transition: all 0.2s ease;
-}
-
-.links a::before {
-    content: "";
-    position: absolute;
-    opacity: 0;
-    top: 50%;
-    left: 80%;
-    height: 5000%;
-    width: 5000%;
-    background: var(--nav-design) center no-repeat;
-    filter: contrast(180%);
-    transform: translate(-50%, -50%) scale(0.05);
-    transition: 0.2s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.links a:hover::before {
-    opacity: 1;
-    transform: translate(-49.7%, -50%) scale(0.05);
-}
-
-.links a span::before {
-    content: "";
-    position: absolute;
-    opacity: 0;
-    top: 50%;
-    left: 80%;
-    height: 5000%;
-    width: 5000%;
-    background: var(--nav-design) center no-repeat;
-    transform: translate(-51.2%, -50%) scale(0.03) scaleX(-1);
-    transition: 0.2s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.links a span:hover::before {
-    opacity: 1;
-    transform: translate(-51.5%, -50%) scale(0.03) scaleX(-1);
-}
-
 .links a::after {
     content: "";
     position: absolute;
@@ -314,6 +275,12 @@ section {
     box-shadow: 0 0 20px 20px black;
 }
 
+.home-title {
+    animation:
+        nav-drop 1.7s ease 0.4s forwards;
+    opacity: 0;
+}
+
 .home-description {
     display: flex;
     flex-direction: column;
@@ -333,6 +300,12 @@ section {
     display: flex;
     justify-content: space-between;
     gap: 30px;
+}
+
+.home-left {
+    animation:
+        info-fade-in 1s ease 0.5s forwards;
+    opacity: 0;
 }
 
 .home-left h1 {
@@ -390,6 +363,18 @@ section {
         profile-fade-in 0.8s ease forwards 0.5s,
         hovering 5s ease-in-out infinite 1.5s,
         pulse 2s ease-in-out infinite 1.5s;
+}
+
+@keyframes info-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        backdrop-filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 @keyframes hovering {
@@ -613,7 +598,7 @@ section {
     display: flex;
     flex-direction: column;
     color: white;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px rgb(255, 0, 0);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -637,7 +622,6 @@ section {
     background-color: var(--skill-card);
     border: 2px solid var(--skill-border);
     border-radius: 20px;
-    color: white;
     transition: 0.2s ease;
 }
 
@@ -654,6 +638,10 @@ section {
     grid-column: 1 / -1;
     justify-self: center;
     max-width: 450px;
+}
+
+.skill-grid h1 {
+    text-shadow: 0 0 10px red;
 }
 
 .programming-grid, .interpersonal-grid {
@@ -685,6 +673,207 @@ section {
 .skill-container h3 {
     color: var(--text-gray);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.projects {
+    text-align: center;
+    padding: 80px;
+    background-color: var(--project-bg);
+}
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project {
+    border: 2px solid rgb(151, 52, 52);
+    border-radius: 20px;
+    background-color: var(--project-container);
+    padding: 20px;
+}
+
+.project h2 {
+    color: var(--project-title);
+}
+
+.project p {
+    color: white;
+}
+
+.view {
+    width: 10vw;
+    height: 7vh;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(255, 34, 100);
+    color: white;
+    font-size: 2.5vmin;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.view:hover {
+    background-color: rgb(255, 211, 224);
+    color: red;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 99999;
+}
+
+.project-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-container {
+    background-color: rgb(63, 0, 0);
+    border: 2px solid white;
+    padding: 30px;
+    border-radius: 20px;
+    width: min(800px, 95vw);
+    color: white;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 40px red;
+}
+
+.modal-container h2 {
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px red;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.slider img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 15px;
+    box-shadow: 0 0 20px black;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1 / 1;
+
+    background: rgba(255, 0, 0, 0.4);
+    border: none;
+    border-radius: 50%;
+
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: red;
+    transform: scale(1.08);
+}
+
+#modalImage {
+    transition: opacity 0.35s ease;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.arts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--arts-bg);
+    padding: 50px;
+}
+
+.arts-container {
+    display: flex;
+}
+
+#art-1, #art-2, #art-3 {
+    width: min(50vh, 40vw);
+    height: min(50vh, 40vw);
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.art-1, .art-2, .art-3 {
+    display: flex;
+    margin: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
 
 
 

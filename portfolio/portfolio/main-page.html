@@ -35,6 +35,9 @@
                     <a href="#projects" data-page="projects"><span>Projects</span></a>
                 </li>
                 <li>
+                    <a href="#arts" data-page="arts"><span>Arts</span></a>
+                </li>
+                <li>
                     <a href="#contacts" data-page="contacts"><span>Contacts</span></a>
                 </li>
                 </ul>
@@ -55,7 +58,9 @@
         <div class="main">
 
             <div class="home-left">
-                <h1>Mike Jeferson Calzada</h1>
+                <div class="home-title">
+                    <h1>Mike Jeferson Calzada</h1>
+                </div>
                 <div class="home-description">
                     <p>A <span style="color: red;">digital artist</span> and <span style="color: red;">web developer</span> blending creative designs with practical modern systems.</p>
                     <p style="font-style: italic; text-shadow: 0 0 10px red;">"Life is like a piano. White keys play the good parts, and black keys play the rough parts, but we need both to make music"</p>
@@ -236,7 +241,100 @@
 
     <section class="projects" id="projects">
         <div class="project-title">
-            <h1>Projects</h1>
+            <p style="color: white; font-size: 50px; font-weight: 600; text-shadow: 0 0 10px red; text-decoration: underline;">Projects</p>
+        </div>
+
+        <div class="project-container">
+            <div class="project">
+                <h2>CRUD System</h2>
+                <p>A basic CRUD System that creates, read, update, and delete information.</p>
+                <p><span style="font-weight: 700;">Contribution:</span> Individual Work</p>
+                <p><span style="font-weight: 700;">Languages & Tools:</span> C</p>
+                <button class="view" data-title="CRUD System"
+                    data-images='[
+                    "assets/proje-3.png"
+                    ]'>View More</button>
+            </div>
+
+            <div class="project">
+                <h2>BMI Calculator</h2>
+                <p>A basic system that calculates your BMI and recommends your schedule for fitness.</p>
+                <p><span style="font-weight: 700;">Contribution:</span> Leader</p>
+                <p><span style="font-weight: 700;">Languages & Tools:</span> Visual Studio, C#</p>
+                <button class="view"
+                    data-title="BMI Calculator"
+                    data-images='[
+                        "assets/proje-4-1.png",
+                        "assets/proje-4-2.png",
+                        "assets/proje-4-3.png",
+                        "assets/proje-4-4.png"
+                    ]'>
+                    View More
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="project-modal" id="projectModal">
+        <div class="modal-container">
+            <button class="modal-close">&times;</button>
+            <h2 id="modalTitle"></h2>
+
+            <div class="slider">
+                <button class="nav-btn prev">&#10094;</button>
+                <img id="modalImage" src="" alt="Project image">
+                <button class="nav-btn next">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="arts" id="arts">
+        <h1 style="color: white;">Digital Arts</h1>
+
+        <div class="arts-container">
+            <div class="art-1">
+                <img id="art-1" src="assets/Frieren3.png" alt="Frieren">
+                <button class="view"
+                    data-title="BMI Calculator"
+                    data-images='[
+                        "assets/Frieren.png",
+                        "assets/Frieren1.png",
+                        "assets/Frieren2.png",
+                        "assets/Frieren3.png"
+                    ]'>
+                    View More
+                </button>
+            </div>
+            <div class="art-2">
+                <img id="art-2" src="assets/Michetrevech3.png" alt="Michetrevech">
+                <button class="view"
+                    data-title="BMI Calculator"
+                    data-images='[
+                        "assets/Michetrevech.png",
+                        "assets/Michetrevech2.png",
+                        "assets/Michetrevech3.png"
+                    ]'>
+                    View More
+                </button>
+            </div>
+            
+        </div>
+        <div class="art-3">
+            <img id="art-3" src="assets/scarasketch6.png" alt="Scaramouche">
+            <button class="view"
+                    data-title="BMI Calculator"
+                    data-images='[
+                        "assets/scarasketch.png",
+                        "assets/scarasketch2.png",
+                        "assets/scarasketch3.png",
+                        "assets/scarasketch4.jpg",
+                        "assets/scarasketch5.png",
+                        "assets/scarasketch6.png"
+                    ]'>
+                    View More
+                </button>
         </div>
     </section>
 
