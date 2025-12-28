@@ -26,7 +26,9 @@
     --project-title: rgb(255, 255, 255);
     --project-container: rgb(192, 111, 111);
     --arts-bg: rgb(255, 107, 107);
+    --contacts: rgb(255, 162, 162);
     --box-shadow: white;
+    --footer: rgb(203, 93, 93);
     --text-light: black;
     --text-gray: white;
     --text-nav: rgb(222, 249, 255);
@@ -52,6 +54,8 @@
     --project-title: rgb(240, 46, 127);
     --project-container: rgb(94, 0, 31);
     --arts-bg: rgb(63, 36, 36);
+    --contacts: rgb(50, 22, 22);
+    --footer: rgb(132, 56, 56);
     --box-shadow: black;
     --text-light: white;
     --text-gray: rgb(176, 176, 176);
@@ -729,7 +733,7 @@ section {
     color: white;
     font-size: 2.5vmin;
     cursor: pointer;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
 }
 
 .view:hover {
@@ -868,6 +872,78 @@ section {
 }
 
 
+
+
+
+
+
+
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: var(--contacts);
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form {
+    border: 2px solid red;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name, .email, .message {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.submit {
+    background-color: rgb(255, 34, 100);
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 60px;
+    transition: 0.2s ease;
+}
+
+.submit:hover {
+    background-color: rgb(255, 211, 224);
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    background-color: var(--footer);
+    padding: 50px;
+}
 
 
 
