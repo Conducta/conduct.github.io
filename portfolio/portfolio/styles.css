@@ -72,6 +72,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -79,6 +80,7 @@ body {
     padding: 0;
     top: 0;
     font-family: 'Chillax', sans-serif;
+    overflow-x: hidden;
 }
 
 .intro {
@@ -140,7 +142,9 @@ section {
     position: fixed;
     padding: 30px;
     height: 20px;
-    width: calc(100vw - 100px);
+    width: calc(100vw - 60px);
+    max-width: calc(100% - 60px);
+    left: 30px;
 
     background-color: rgba(195, 0, 0, 0.61);
     border-radius: 50px;
