@@ -1,3 +1,6 @@
+// =========================
+// Constants & DOM Elements
+// =========================
 const toggle = document.getElementById("toggle");
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
@@ -5,6 +8,9 @@ const navLinks = document.querySelectorAll(".links a");
 const MOBILE_BREAKPOINT = 900;
 const THEME_KEY = "preferred-theme";
 
+// =========================
+// Helper Functions
+// =========================
 const closeMenu = () => {
     if (!nav) return;
     nav.classList.remove("is-open");
@@ -28,7 +34,9 @@ const applyTheme = (theme) => {
     }
 };
 
-// initialize theme from storage
+// =========================
+// Theme Initialization
+// =========================
 if (toggle) {
     const storedTheme = localStorage.getItem(THEME_KEY);
     const initialTheme = storedTheme === "dark" || storedTheme === "light"
@@ -37,6 +45,9 @@ if (toggle) {
     applyTheme(initialTheme);
 }
 
+// =========================
+// Mobile Menu
+// =========================
 if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("is-open");
@@ -46,9 +57,7 @@ if (menuToggle && nav) {
 
 if (navLinks.length && nav) {
     navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            closeMenu();
-        });
+        link.addEventListener("click", closeMenu);
     });
 }
 
@@ -58,6 +67,9 @@ window.addEventListener("resize", () => {
     }
 });
 
+// =========================
+// Theme Toggle
+// =========================
 if (toggle) {
     toggle.addEventListener("click", (e) => {
         e.preventDefault();
@@ -65,14 +77,12 @@ if (toggle) {
         const html = document.documentElement;
         const newTheme = html.getAttribute("data-theme") === "light" ? "dark" : "light";
 
-        // switch theme & icon
         applyTheme(newTheme);
         localStorage.setItem(THEME_KEY, newTheme);
 
         const icon = toggle.querySelector("i");
         if (icon) {
-            // restart rotation animation
-            void icon.offsetWidth; // force reflow
+            void icon.offsetWidth; // force reflow to restart rotation
             icon.classList.add("rotate");
         }
     });

@@ -25,10 +25,11 @@
     --project-bg: rgb(255, 139, 139);
     --project-title: rgb(255, 255, 255);
     --project-container: rgb(192, 111, 111);
-    --arts-bg: rgb(255, 107, 107);
+    --arts-bg: url("assets/kazuha-5.png");
     --contacts: rgb(255, 162, 162);
+    --contact-form: rgb(190, 105, 105);
     --box-shadow: white;
-    --footer: rgb(203, 93, 93);
+    --footer: rgb(173, 101, 101);
     --text-light: black;
     --text-gray: white;
     --text-nav: rgb(222, 249, 255);
@@ -53,9 +54,16 @@
     --project-bg: rgb(41, 3, 3);
     --project-title: rgb(240, 46, 127);
     --project-container: rgb(94, 0, 31);
-    --arts-bg: rgb(63, 36, 36);
-    --contacts: rgb(50, 22, 22);
-    --footer: rgb(132, 56, 56);
+    --arts-bg: url("assets/arlecchino-4.jpg");
+    --contacts: rgb(39, 24, 24);
+    --contact-form: rgb(65, 43, 43);
+    --footer: radial-gradient(
+                    circle at 100% 5%,
+                    rgba(97, 63, 63, 0.555),
+                    rgba(0, 0, 0, 0.15) 35%,
+                    transparent 60%
+                ),
+                rgb(46, 27, 27);
     --box-shadow: black;
     --text-light: white;
     --text-gray: rgb(176, 176, 176);
@@ -132,7 +140,7 @@ section {
     position: fixed;
     padding: 30px;
     height: 20px;
-    width: 95vw;
+    width: calc(100vw - 100px);
 
     background-color: rgba(195, 0, 0, 0.61);
     border-radius: 50px;
@@ -214,7 +222,7 @@ section {
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
     position: relative;
-    z-index: 200;
+    z-index: 1000;
 }
 
 .menu-toggle:hover {
@@ -264,7 +272,7 @@ section {
     padding-top: 20vh;
     padding-bottom: 25vh;
     border-bottom: 2px solid rgb(255, 255, 255);
-    gap: 10vw;
+    gap: clamp(20px, 5vw, 80px);
 }
 
 .main::before {
@@ -479,6 +487,7 @@ section {
     position: absolute;
     inset: 0;
     background: var(--about-bg);
+    box-shadow: 0 0 20px 20px black;
     z-index: -99;
     filter: blur(10px);
 }
@@ -845,10 +854,22 @@ section {
 .arts {
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: center;
     align-items: center;
-    background-color: var(--arts-bg);
     padding: 50px;
+}
+
+.arts::before {
+    content: '';
+    position: absolute;
+    background-image: var(--arts-bg);
+    background-size: cover;
+    background-position: center;
+    inset: 0;
+    z-index: -99;
+    filter: blur(10px);
+    box-shadow: 0 0 20px 20px black;
 }
 
 .arts-container {
@@ -886,6 +907,8 @@ section {
     align-items: center;
     padding: 50px;
     background-color: var(--contacts);
+    box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.527);
+    color: white;
 }
 
 .forms {
@@ -897,7 +920,8 @@ section {
 }
 
 .contact-form {
-    border: 2px solid red;
+    background-color: var(--contact-form);
+    border: 2px solid rgb(146, 99, 99);
     border-radius: 20px;
     padding: 50px;
 }
@@ -914,6 +938,11 @@ section {
     margin: 20px;
 }
 
+.message textarea {
+    width: 500px;
+    height: 200px;
+}
+
 .submit {
     background-color: rgb(255, 34, 100);
     font-size: 20px;
@@ -926,8 +955,8 @@ section {
 }
 
 .submit:hover {
-    background-color: rgb(255, 211, 224);
-    color: red;
+    background-color: rgb(255, 170, 196);
+    color: rgb(255, 0, 106);
 }
 
 
@@ -941,14 +970,28 @@ section {
 
 
 footer {
-    background-color: var(--footer);
+    background: var(--footer);
     padding: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+    color: white;
 }
 
+.contact-sources {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.sources i {
+    font-size: 50px;
+    color: white;
+    transition: 0.5s ease;
+}
 
-
-
+.sources i:hover {
+    color: rgb(255, 7, 110);
+}
 
 
 
@@ -1013,7 +1056,7 @@ footer {
     to { transform: rotate(360deg); }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 870px) {
     .nav {
         padding: 20px 24px;
     }
@@ -1022,6 +1065,7 @@ footer {
         display: flex;
         order: 3;
         margin-left: auto;
+        visibility: visible;
     }
     
     .logo {
@@ -1034,7 +1078,6 @@ footer {
         margin-right: 10px;
     }
 
-/* Sidebar menu (unchanged, but clearer intent) */
     .left-nav {
         position: fixed;
         top: 0;
@@ -1085,7 +1128,23 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
+    .main {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
     .main {
         display: flex;
         flex-direction: column-reverse;
@@ -1129,6 +1188,46 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 2rem;
         padding: 2px;
+    }
+    
+    .arts-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message textarea {
+        width: 300px;
+        height: 200px;
+    }
+
+    .contact-sources {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sources {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sources i{
+        margin: 20px;
     }
 }
 

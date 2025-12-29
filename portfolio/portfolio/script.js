@@ -1,10 +1,21 @@
+// =========================
+// Constants & DOM Elements
+// =========================
 const toggle = document.getElementById("toggle");
+const btn = toggle; // same as toggle
+const fx = document.querySelector(".theme-process");
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 const navLinks = document.querySelectorAll(".links a");
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalImage = document.getElementById("modalImage");
 const MOBILE_BREAKPOINT = 900;
 const THEME_KEY = "preferred-theme";
 
+// =========================
+// Helper Functions
+// =========================
 const closeMenu = () => {
     if (!nav) return;
     nav.classList.remove("is-open");
@@ -28,9 +39,9 @@ const applyTheme = (theme) => {
     }
 };
 
-
-
-// initialize theme from storage
+// =========================
+// Initialize Theme
+// =========================
 if (toggle) {
     const storedTheme = localStorage.getItem(THEME_KEY);
     const initialTheme = storedTheme === "dark" || storedTheme === "light"
@@ -39,6 +50,9 @@ if (toggle) {
     applyTheme(initialTheme);
 }
 
+// =========================
+// Mobile Menu
+// =========================
 if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("is-open");
@@ -48,9 +62,7 @@ if (menuToggle && nav) {
 
 if (navLinks.length && nav) {
     navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            closeMenu();
-        });
+        link.addEventListener("click", closeMenu);
     });
 }
 
@@ -60,41 +72,28 @@ window.addEventListener("resize", () => {
     }
 });
 
+// =========================
+// Theme Toggle Animation
+// =========================
 if (toggle) {
     toggle.addEventListener("click", (e) => {
         e.preventDefault();
-
-        // disable button
         btn.style.pointerEvents = "none";
 
-        // start the effect
         fx.classList.remove("run");
-        void fx.offsetWidth;
+        void fx.offsetWidth; // trigger reflow
         fx.classList.add("run");
 
-        // rotate icon visually but NO theme changes yet
         const icon = toggle.querySelector("i");
         if (icon) {
-            void icon.offsetWidth;
+            void icon.offsetWidth; // trigger reflow
             icon.classList.add("rotate");
         }
     });
 }
 
-
-const btn = document.getElementById("toggle");
-const fx = document.querySelector(".theme-process");
-
-btn.addEventListener("click", () => {
-    btn.style.pointerEvents = "none";
-    fx.classList.remove("run");
-    void fx.offsetWidth;
-    fx.classList.add("run");
-});
-
 fx.addEventListener("animationend", (e) => {
     if (e.animationName === "expand") {
-        // switch theme here
         const html = document.documentElement;
         const newTheme = html.getAttribute("data-theme") === "light" ? "dark" : "light";
 
@@ -102,20 +101,14 @@ fx.addEventListener("animationend", (e) => {
         localStorage.setItem("preferred-theme", newTheme);
     }
 
-    // and only after EVERYTHING is done, re-enable button
     if (e.animationName === "submerge") {
         btn.style.pointerEvents = "auto";
     }
 });
 
-
-
-
-
-const modal = document.getElementById("projectModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalImage = document.getElementById("modalImage");
-
+// =========================
+// Modal Gallery
+// =========================
 let images = [];
 let index = 0;
 
@@ -150,7 +143,6 @@ document.querySelector(".next").onclick = () => {
 document.querySelector(".prev").onclick = () => {
     fadeToImage((index - 1 + images.length) % images.length);
 };
-
 
 modal.addEventListener("click", e => {
     if (e.target === modal) modal.classList.remove("active");
