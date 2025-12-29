@@ -20,6 +20,10 @@ const closeMenu = () => {
     if (!nav) return;
     nav.classList.remove("is-open");
     document.body.classList.remove("menu-open");
+    if (menuToggle) {
+        menuToggle.classList.remove('is-active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
 };
 
 const applyTheme = (theme) => {
@@ -57,6 +61,9 @@ if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("is-open");
         document.body.classList.toggle("menu-open", isOpen);
+        // reflect state on the toggle button for styling and accessibility
+        menuToggle.classList.toggle('is-active', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 }
 
